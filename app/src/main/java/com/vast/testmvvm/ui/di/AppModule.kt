@@ -1,18 +1,18 @@
 package com.vast.testmvvm.ui.di
 
-import com.vast.testmvvm.ui.cities.info.CityInfoVM
-import com.vast.testmvvm.ui.cities.list.CityListVM
+import com.vast.testmvvm.ui.cities.info.CityInfoViewModel
+import com.vast.testmvvm.ui.cities.list.CityListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val appModule = module {
-    viewModel<CityListVM> {
-        CityListVM(
+    viewModel<CityListViewModel> {
+        CityListViewModel(
             getCityListUseCase = get()
         )
     }
     viewModel { (cityId: Int) ->
-        CityInfoVM(
+        CityInfoViewModel(
             cityId = cityId,
             getCityInfoUseCase = get()
         )

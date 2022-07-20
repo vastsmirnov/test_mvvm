@@ -8,9 +8,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class CityInfoActivity : AppCompatActivity() {
-    private val cityId: Int by requireExtra("city_id")
+    companion object {
+        const val CITY_ID = "city_id"
+    }
 
-    private val vm: CityInfoVM by viewModel {
+    private val cityId: Int by requireExtra(CITY_ID)
+
+    private val viewModel: CityInfoViewModel by viewModel {
         parametersOf(
             cityId
         )
@@ -22,9 +26,11 @@ class CityInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCityInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        vm.cityInfoLiveData.observe(this) {
-            binding.tvId.text = it.id.toString()
-            binding.tvCityName.text = it.name
+        viewModel.cityInfoLiveData.observe(this) {
+            with(binding) {
+                tvId.text = it.id.toString()
+                tvCityName.text = it.name
+            }
         }
     }
 }

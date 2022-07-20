@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.vast.testmvvm.domain.models.City
 import com.vast.testmvvm.domain.useCases.Cities.info.GetCityInfoUseCase
 
-class CityInfoVM(
+class CityInfoViewModel(
     private val cityId: Int,
     private val getCityInfoUseCase: GetCityInfoUseCase
 ) : ViewModel() {

@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.vast.testmvvm.databinding.ActivityCityBinding
 import com.vast.testmvvm.domain.models.City
 import com.vast.testmvvm.ui.cities.info.CityInfoActivity
+import com.vast.testmvvm.ui.cities.info.CityInfoViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CityListActivity : AppCompatActivity() {
     lateinit var binding: ActivityCityBinding
-    private val vm by viewModel<CityListVM>()
+    private val vm by viewModel<CityListViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +22,7 @@ class CityListActivity : AppCompatActivity() {
         val adapter = CityListAdapter(object : CityOnClickListener {
             override fun onClicked(city: City) {
                 val intent = Intent(this@CityListActivity, CityInfoActivity::class.java)
-                intent.putExtra("city_id", city.id)
+                intent.putExtra(CityInfoActivity.CITY_ID, city.id)
                 startActivity(intent)
             }
         })

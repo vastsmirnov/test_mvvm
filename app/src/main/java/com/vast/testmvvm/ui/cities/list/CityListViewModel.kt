@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.vast.testmvvm.domain.models.City
 import com.vast.testmvvm.domain.useCases.Cities.list.GetCityListUseCase
 
-class CityListVM(private val getCityListUseCase: GetCityListUseCase) : ViewModel() {
+class CityListViewModel(private val getCityListUseCase: GetCityListUseCase) : ViewModel() {
     private val _citiesLiveDta = MutableLiveData<List<City>>()
     val citiesLiveDta = _citiesLiveDta as LiveData<List<City>>
 
